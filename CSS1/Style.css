@@ -1,5 +1,4 @@
-﻿/* for Holi :body{margin:0; background: #fff url(../images/holi.jpg) center top no-repeat fixed; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:18px; color:#000;} */
-/* for diwali : body{margin:0; background: #094e95 url(../images/bg-body.jpg) center 39px no-repeat; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:18px; color:#000;}*/
+﻿/* holi theme */
 h1,h2,h3,h4,h5,h6,ul,li,form,label,input{margin:0; padding:0;
     }
 a img{border:none;}
@@ -31,12 +30,8 @@ a:hover{text-decoration:underline;}
 #loginwarpper #col-right img{border:3px solid #fff;}
 #modal-loginbox{float:left; width:369px; margin-left:12px;}
 #modal-loginbox #contents {
-    -moz-border-bottom-colors: none;
-    
-    -moz-border-image: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
+
+    border-image: none; 
 	 
     background: none repeat scroll 0 0 #FFB106;
      border-radius: 5%;
@@ -103,7 +98,6 @@ a:hover{text-decoration:underline;}
 
 /* Login Button */
 #loginButton { 
-    display:inline-block;
     float:right;
     background:#d2e0ea url(https://portal2.tmu.ac.in/images/buttonbg.png) repeat-x; 
     border:1px solid #899caa; 
@@ -183,7 +177,6 @@ fieldset#body {
     float:left;
     padding:0;
     border:0;
-    *margin:-3px 9px 0 0; /* IE7 Fix */
 }
 
 
@@ -222,7 +215,6 @@ fieldset#body {
     -webkit-box-shadow:none;
     margin:0 12px 0 0;
     cursor:pointer;
-    *padding:7px 2px 8px 2px; /* IE7 Fix */
 }
 
 /* Forgot your password */
@@ -306,6 +298,7 @@ input:focus {
 #modal-loginbox2{float:left; width:369px; margin-left:12px;}
 #modal-loginbox2 #contents {
     -moz-border-bottom-colors: none;
+    border-image:none;
     -moz-border-image: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -327,8 +320,22 @@ input:focus {
 #modal-loginbox2 #bottom{float:left; background:url(https://portal2.tmu.ac.in/images/bg-bottom-loginbox.jpg) no-repeat; height:18px; width:100%;}
 #capcha{width:201px; height:51px; border:1px solid  #C2AE71; margin-left:77px;}
 
-
-  /*Modal Popup*/
-
-subpageMenuBlock {
+#pnlPopup.modalPopup {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFB106;
+  border-radius: 5%;
+  border: 4px solid white;
+  padding: 3px;
+  width: 460px;
+  z-index: 10001;
+  display: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 500px) {
+  #pnlPopup.modalPopup {
+    width: 95%;
+  }
 }

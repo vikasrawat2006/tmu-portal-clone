@@ -33,3 +33,21 @@ document.addEventListener("DOMContentLoaded", () => {
     alert(`Password reset requested for ${userId} (Mobile: ${mobile})`);
   });
 });
+function centerModal() {
+  const modal = document.getElementById("pnlPopup");
+  const rect = modal.getBoundingClientRect();
+  modal.style.position = "fixed";
+  modal.style.top = `calc(50% - ${rect.height / 2}px)`;
+  modal.style.left = `calc(50% - ${rect.width / 2}px)`;
+}
+
+document.getElementById("forgetPasswordBtn").addEventListener("click", () => {
+  centerModal();
+});
+
+window.addEventListener("resize", () => {
+  const modal = document.getElementById("pnlPopup");
+  if (modal.style.display === "block") {
+    centerModal();
+  }
+});
