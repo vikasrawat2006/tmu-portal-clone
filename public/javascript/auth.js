@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("https://didactic-engine-r46qv69rj67r3p7pv-3000.app.github.dev/api/login", {
+      const response = await fetch('/api/login', {
 
         method: "POST",
         headers: {

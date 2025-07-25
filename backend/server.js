@@ -1,33 +1,54 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config({ path: './backend/.env' });  // <-- THIS LINE
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 3000;
+
+// ✅ Allowed origins
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://didactic-engine-r46qv69rj67r3p7pv-3000.app.github.dev'
+];
+
+// ✅ CORS setup
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log(`❌ Blocked CORS request from origin: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+// ✅ Apply middleware
+app.use(cors(corsOptions));
 app.use(express.json());
-
-console.log("🔗 Connecting to Mongo URI:", process.env.MONGO_URI);
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ Connected to MongoDB Atlas"))
-  .catch((err) => console.log("❌ Mongo connection error:", err));
-
-app.use(express.json()); // ✅ THIS parses incoming JSON
-
-app.use('/api', require('./routes/auth'));
-
-app.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
-});
-
-const path = require('path');
-
-// Serve static files from public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Route for root "/" => show login.html
+// ✅ MongoDB Connection
+console.log("🔗 Connecting to Mongo URI:", process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ Connected to MongoDB Atlas"))
+.catch((err) => console.error("❌ Mongo connection error:", err));
+
+// ✅ Routes
+app.use('/api', require('./routes/auth'));
+
+// ✅ Serve login.html at root
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/login.html'));
+});
+
+// ✅ Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

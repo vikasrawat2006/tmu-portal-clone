@@ -1,11 +1,12 @@
 {
   "name": "tmu-portal-clone",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node backend/server.js",
+  "dev": "nodemon backend/server.js"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,5 +19,17 @@
     "express-session": "^1.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikasrawat2006/tmu-portal-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vikasrawat2006/tmu-portal-clone/issues"
+  },
+  "homepage": "https://github.com/vikasrawat2006/tmu-portal-clone#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
