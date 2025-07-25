@@ -36,10 +36,5 @@ router.post('/login', async (req, res) => {
     return res.status(500).json({ success: false, reason: "server" });
   }
 });
-
 module.exports = router;
-fetch("/api/login", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ enrollment, password })
-})
+

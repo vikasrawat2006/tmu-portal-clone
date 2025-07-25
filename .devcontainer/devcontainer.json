@@ -1,0 +1,11 @@
+{
+  "name": "TMU Portal Clone",
+  "forwardPorts": [3000],
+  "ports": [
+    {
+      "port": 3000,
+      "label": "Node Server",
+      "onAutoForward": "openBrowser"
+    }
+  ]
+}

@@ -14,6 +14,8 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to MongoDB Atlas"))
   .catch((err) => console.log("❌ Mongo connection error:", err));
 
+app.use(express.json()); // ✅ THIS parses incoming JSON
+
 app.use('/api', require('./routes/auth'));
 
 app.listen(3000, () => {

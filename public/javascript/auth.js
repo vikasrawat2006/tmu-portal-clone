@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("https://didactic-engine-r46qv69rj67r3p7pv-3000.app.github.dev/api/login", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
